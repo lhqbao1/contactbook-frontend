@@ -31,10 +31,15 @@
                     Chi tiết Liên hệ
                     <i class="fas fa-address-card" />
                 </h4>
+                <h4>
+                    Đây là ID:
+                    <i class="fas fa-address-card" />
+                </h4>
+                <!-- <Field name="test" type="test" class="form-control" v-model="activeContact.id" /> -->
                 <ContactCard :contact="activeContact" />
                 <router-link :to="{
-                name: 'contact.edit',
-                params: { id: activeContact.id },
+                    name: 'contact.edit',
+                    params: { id: activeContact.id },
                 }">
                     <span class="mt-2 badge badge-warning">
                         <i class="fas fa-edit" /> Hiệu chỉnh</span>
@@ -43,21 +48,17 @@
         </div>
     </div>
 </template>
-
 <script>
 import ContactCard from '@/components/ContactCard.vue';
 import InputSearch from '@/components/InputSearch.vue';
 import ContactList from '@/components/ContactList.vue';
 import { contactService } from '@/services/contact.service';
-
 export default {
     components: {
         ContactCard,
         InputSearch,
         ContactList,
     },
-    // The full code will be presented below
-
     data() {
         return {
             contacts: [],
@@ -65,7 +66,6 @@ export default {
             searchText: '',
         };
     },
-
     watch: {
         // Monitor changes on searchText.
         // Release the currently selected contact.
@@ -73,7 +73,6 @@ export default {
             this.activeIndex = -1;
         },
     },
-
     computed: {
         // Map contacts to strings for searching.
         contactsAsStrings() {
@@ -97,7 +96,6 @@ export default {
             return this.filteredContacts.length;
         },
     },
-
     methods: {
         async retrieveContacts() {
             try {
@@ -109,12 +107,10 @@ export default {
                 console.log(error);
             }
         },
-
         refreshList() {
             this.retrieveContacts();
             this.activeIndex = -1;
         },
-
         async onDeleteContacts() {
             if (confirm('Bạn muốn xóa tất cả Liên hệ?')) {
                 try {
@@ -125,18 +121,16 @@ export default {
                 }
             }
         },
-
         goToAddContact() {
             this.$router.push({ name: 'contact.add' });
         },
     },
-
     mounted() {
         this.refreshList();
     },
-};
-</script>
+}
 
+</script>
 <style scoped>
 .page {
     text-align: left;

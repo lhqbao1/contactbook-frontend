@@ -14,7 +14,6 @@ export default {
     },
 };
 </script>
-
 <template>
     <div class="input-group">
         <input type="text" class="form-control" placeholder="Nhập thông tin cần tìm" :value="modelValue"
